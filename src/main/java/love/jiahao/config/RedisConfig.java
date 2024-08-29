@@ -41,6 +41,4 @@ public class RedisConfig {
         // 返回配置好的RedisTemplate实例
         return redisTemplate;
     }
-
-
 }

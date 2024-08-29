@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,7 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtil<T> {
     private static final int BASE_EXPIRATION = 60 * 60; // 基础过期时间为1小时
     private static final int RANDOM_RANGE = 60 * 10; // 随机范围为10分钟
-    private static final Random RANDOM = new Random();
+    // 采用线程安全的类ThreadLocalRandom进行随机数生成
+    private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
     private final RedisTemplate<String, T> redisTemplate;
 
     /**

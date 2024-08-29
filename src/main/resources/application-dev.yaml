@@ -1,11 +1,20 @@
+# 配置Spring框架的相关属性
 spring:
+  # 应用配置
   application:
+    # 应用名称
     name: test-canal
+  # 数据源配置
   datasource:
+    # 数据源类型，这里配置使用阿里云的Druid连接池
     type: com.alibaba.druid.pool.DruidDataSource
+    # 数据库驱动类
     driver-class-name: com.mysql.jdbc.Driver
+    # 数据库用户名
     username: canal
+    # 数据库密码
     password: canal
+    # 数据库连接URL，包括数据库所在地址、端口号、数据库名以及相关连接参数
     url: jdbc:mysql://tcloud:3306/canal?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
   # redis 配置
   redis:
@@ -36,6 +45,7 @@ canal:
   server: tcloud:11111
   # 数据目的地，标识数据的变化流向
   destination: example
+# 关闭canal-boot-starter里面的日志，因为他一直在刷
 logging:
   level:
     top.javatool.canal.client.client: OFF
